@@ -30,7 +30,7 @@ func main() {
 	}
 	defer session.Close()
 
-	out, err := ssh.ExecuteCommands(session, "touch test1", "touch test2", "touch test{3,7}")
+	out, err := ssh.ExecuteCommands(session, "touch test1", "touch test2", "touch test{3..7}", "echo 1", "ls -la")
 
 	if err != nil {
 		log.Fatal("failed execution commands: ", err)
