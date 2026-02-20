@@ -34,5 +34,11 @@ func main() {
 		log.Fatal("failed to create remote file: ", err)
 	}
 
-	fmt.Println("Remote file 'test' has been created")
+	out, err := ssh.ExecuteCommand(session, "touch test1", "touch test2")
+
+	if err != nil {
+		log.Fatal("failed execution commands: ", err)
+	}
+
+	fmt.Print(string(out))
 }
