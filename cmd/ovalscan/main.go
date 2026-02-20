@@ -30,11 +30,7 @@ func main() {
 	}
 	defer session.Close()
 
-	if err := session.Run("touch test"); err != nil {
-		log.Fatal("failed to create remote file: ", err)
-	}
-
-	out, err := ssh.ExecuteCommand(session, "touch test1", "touch test2")
+	out, err := ssh.ExecuteCommands(session, "touch test1", "touch test2", "touch test{3,7}")
 
 	if err != nil {
 		log.Fatal("failed execution commands: ", err)
